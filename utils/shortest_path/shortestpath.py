@@ -53,24 +53,12 @@ def dfs(cur, dis):
             book[i] = 0; 
             currQue.remove(i)
             print(i)
-def preData():
+def getShortestPath(res,des):
     G=nx.read_edgelist("E:/Download/social_network/email-Eu-core.txt/email-Eu-core.txt")
-    size=len(nx.nodes(G))
-    edges=G.edges()
-    # labels=map(change,np.loadtxt(directory+edgeList))
-    # for line in nx.generate_edgelist(G)
-    # new_array=np.zeros((size,size),dtype=int)
-    new_array=[]
-    for i in range(size):
-        new_array.append([float("inf")]*size)
-    for line in edges:
-        new_array[int(line[0])][int(line[1])]=1
-        new_array[int(line[1])][int(line[0])]=1
-    return new_array
+    nbrs=nx.all_neighbors(G,"12")
+    print([nodes for nodes in nbrs ])
+    return nx.all_shortest_paths(G,res,des)
+
 if __name__ == "__main__":
-    sys.setrecursionlimit(2000)
-    adj_array=preData()
-    init(len(adj_array),290,adj_array,12)
-    dfs(12,0)
-    print(shortest_path)
-    print(shortestQue)
+    shortest_paths=getShortestPath(12,290)
+    print([p for p in shortest_paths])

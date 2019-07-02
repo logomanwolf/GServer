@@ -1,7 +1,7 @@
 // call.js
 const exec = require('child_process').exec;
 const execSync = require('child_process').execSync;
-// 异步执行
+//调用python文件来执行
 const communityDetect=(filename)=>{   
     const output=execSync('python comunityDetect.py '+filename)
     var json = output.toString()

@@ -7,12 +7,28 @@ const exec = require('child_process').exec;
 const app = new Koa();
 
 const call=require('./call.js')
-const filename="E:/Download/social_network/Email-EuAll.txt/Email-EuAll.edgelist"
-// 对于任何请求，app将调用该异步函数处理请求：
+// const filename="E:/Download/social_network/Email-EuAll.txt/Email-EuAll.edgelist"
+const filename="E:/Download/social_network/email-Eu-core.txt/email-Eu-core.edgelist"
+// 对于任何请求，app将调用该同步函数处理请求：
+
 router.get('/communityDetect', async (ctx, next) => {
     const result=call.communityDetect(filename)
     ctx.response.body=result
 })
+
+router.get('/shortestPath/:start/:end',async(ctx,next)=>{
+    const {start,end}=ctx.params
+    const argvs=filename+' '+start+' '+end+' '
+    console.log(argvs)
+    const result=call.shortestPath(argvs) 
+    ctx.response.body=result
+})
+
+router.get('/pageRank', async (ctx, next) => {
+    const result=call.pageRank(filename)
+    ctx.response.body=result
+})
+
 // 调用路由中间件
 app.use(router.routes())
 // 在端口3000监听:

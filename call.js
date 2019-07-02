@@ -8,20 +8,15 @@ const communityDetect=(filename)=>{
     return json
 }
 
-const shortestPath=()=>exec('python ',function(error,stdout,stderr){
-    if(error) {
-        console.info('stderr : '+stderr);
-    }
-    console.log('exec: ' + stdout);
+const shortestPath=(argvs)=>{
+    const buffer=execSync('python shortestPath.py '+argvs)
+    return buffer.toString()
 }
-)
 
-const pageRank=()=>exec('python ',function(){
-    if(error) {
-        console.info('stderr : '+stderr);
-    }
-    console.log('exec: ' + stdout);
-})
+const pageRank= (filename)=>{
+    const buffer=execSync('python pageRank.py '+filename)
+    return buffer.toString()
+}
 
 
 module.exports={pageRank,shortestPath,communityDetect}

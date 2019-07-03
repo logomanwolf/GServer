@@ -50,13 +50,24 @@ router.get('/shortestPath',async(ctx,next)=>{
 //     const result=call.shortestPath(argvs) 
 //     ctx.response.body=result
 // })
+
 //节点排名，返回每一个节点的排名指数，所有节点排名指数相加等于1
-router.post('/pageRank', async (ctx, next) => {
+// router.post('/pageRank', async (ctx, next) => {
+//     const result=call.pageRank(filename)
+//     ctx.response.body=result
+// })
+
+router.get('/pageRank', async (ctx, next) => {
     const result=call.pageRank(filename)
     ctx.response.body=result
 })
-router.get('/pageRank', async (ctx, next) => {
-    const result=call.pageRank(filename)
+
+router.post('/pageRank', async (ctx, next) => {
+    const {personalization}=ctx.request.body
+    let argvs=filename;
+    if (personalization!==undefined)
+    argvs+=' '+personalization
+    const result=call.pageRank(argvs)
     ctx.response.body=result
 })
 

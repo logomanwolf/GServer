@@ -11,6 +11,7 @@ if __name__ == '__main__':
     # p.rank()
     # sorted_r = sorted(p.ranks.items(), key=operator.itemgetter(1), reverse=True)
     pr=nx.pagerank(graph)
-    print(pr)
+    pagerank=sorted(pr.items(),key=lambda item:item[1],reverse=True)
+    print(pagerank)
 
  

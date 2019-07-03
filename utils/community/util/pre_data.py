@@ -3,7 +3,6 @@ import networkx as nx
 groundTruth="E:/Download/social_network/email-Eu-core-department-labels.txt/email-Eu-core-department-labels.txt"
 edgeList="E:\Download\social_network\email-EuAll.txt\Email-EuAll.txt"
 def preData():
-    
     G=nx.read_edgelist(edgeList)
     size=len(nx.nodes(G))
     edges=G.edges()

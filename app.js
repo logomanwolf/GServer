@@ -12,6 +12,12 @@ const filename="./data/email-Eu-core.edgelist"
 // 对于任何请求，app将调用该同步函数处理请求：
 // 引入
 const bodyParser = require('koa-bodyparser')
+const ports = require('./package.json').ports;
+// 设置跨域
+app.use(async (ctx, next) => {
+    ctx.set("Access-Control-Allow-Origin", "*");
+    await next();
+})
 // 配置中间件
 app.use(bodyParser())
 // 调用路由中间件
@@ -58,7 +64,9 @@ router.get('/shortestPath',async(ctx,next)=>{
 // })
 
 router.get('/pageRank', async (ctx, next) => {
-    const result=call.pageRank(filename)
+    const result = call.pageRank(filename)
+    console.log(typeof result)
+    const jsonstring={"data":result}
     ctx.response.body=result
 })
 
@@ -67,10 +75,12 @@ router.post('/pageRank', async (ctx, next) => {
     let argvs=filename;
     if (personalization!==undefined)
     argvs+=' '+personalization
-    const result=call.pageRank(argvs)
-    ctx.response.body=result
+    const result = call.pageRank(argvs)
+    console.log(typeof result)
+    ctx.response.body = result
+    
 })
 
 // 在端口3000监听:
-app.listen(3000);
-console.log('app started at port 3000...');
+app.listen(ports.port);
+console.log('app started at port 3003...');

@@ -15,5 +15,8 @@
     "start": "node app.jsnode"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "ports":{
+    "port":3003
+  }
 }

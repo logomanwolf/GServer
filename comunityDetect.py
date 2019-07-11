@@ -3,6 +3,7 @@ import networkx as nx
 import matplotlib.pyplot as plt
 import time
 import sys
+import json
 
 if __name__ == "__main__":
     if sys.argv.__len__()<2:
@@ -13,5 +14,6 @@ if __name__ == "__main__":
             G=nx.read_edgelist(filename)
         #first compute the best partition
             partition = community.best_partition(G)
-            print(partition)
+            jsonStr = json.dumps(partition)
+            print(jsonStr)
             

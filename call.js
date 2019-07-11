@@ -15,8 +15,8 @@ const shortestPath=(argvs)=>{
 
 const pageRank= (argvs)=>{
     const buffer=execSync('python pageRank.py '+argvs)
-    console.log(argvs)
-    return buffer.toString()
+    // console.log(argvs)
+    return buffer.toString();
 }
 
 

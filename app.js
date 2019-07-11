@@ -8,7 +8,8 @@ const app = new Koa();
 
 const call=require('./call.js')
 // const filename="E:/Download/social_network/Email-EuAll.txt/Email-EuAll.edgelist"
-const filename="./data/email-Eu-core.edgelist"
+// const filename="./data/email-Eu-core.edgelist"
+const filename="./data/demo.edgelist"
 // 对于任何请求，app将调用该同步函数处理请求：
 // 引入
 const bodyParser = require('koa-bodyparser')
@@ -65,8 +66,6 @@ router.get('/shortestPath',async(ctx,next)=>{
 
 router.get('/pageRank', async (ctx, next) => {
     const result = call.pageRank(filename)
-    console.log(typeof result)
-    const jsonstring={"data":result}
     ctx.response.body=result
 })
 
@@ -76,7 +75,6 @@ router.post('/pageRank', async (ctx, next) => {
     if (personalization!==undefined)
     argvs+=' '+personalization
     const result = call.pageRank(argvs)
-    console.log(typeof result)
     ctx.response.body = result
     
 })

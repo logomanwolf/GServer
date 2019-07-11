@@ -1,5 +1,6 @@
 import sys
 import networkx as nx
+import json
 
 if __name__ == '__main__':
     if sys.argv.__len__()<2:
@@ -17,7 +18,11 @@ if __name__ == '__main__':
         pr=nx.pagerank(graph,personalization=vec)
     else:
         pr=nx.pagerank(graph)
-    pagerank=sorted(pr.items(),key=lambda item:item[1],reverse=True)
-    print(pagerank)
+    pagerank = sorted(pr.items(), key=lambda item: item[1], reverse=True)
+    # pagerank = sorted(pr.items(), key=lambda item: '{:.3f}'.format(item[1]), reverse=True) 
+    # data = [tuple((d[0], '{:.6f}'.format(d[1]))) for d in pagerank]
+    # output = dict(data)
+    jsonStr = json.dumps(pagerank)
+    print(jsonStr)
 
  

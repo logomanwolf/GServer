@@ -11,7 +11,10 @@ if __name__ == "__main__":
     else:
         filename=sys.argv[1]
         if filename.endswith('.edgelist'):
-            G=nx.read_edgelist(filename)
+            if filename.find('weight')==-1:
+                G = nx.read_edgelist(filename)
+            else:
+                G=nx.read_weighted_edgelist(filename)
         #first compute the best partition
             partition = community.best_partition(G)
             jsonStr = json.dumps(partition)

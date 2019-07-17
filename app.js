@@ -9,7 +9,7 @@ const app = new Koa();
 const call=require('./call.js')
 // const filename="E:/Download/social_network/Email-EuAll.txt/Email-EuAll.edgelist"
 // const filename="./data/email-Eu-core.edgelist"
-const filename="./data/demo.edgelist"
+const filename="./data/3eltweighted.edgelist"
 // 对于任何请求，app将调用该同步函数处理请求：
 // 引入
 const bodyParser = require('koa-bodyparser')

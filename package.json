@@ -4,6 +4,8 @@
   "description": "",
   "main": "app.js",
   "dependencies": {
+    "d3-color": "^1.2.8",
+    "d3-interpolate": "^1.3.2",
     "koa": "^2.7.0",
     "koa-bodyparser": "^4.2.1",
     "koa-router": "^7.4.0",
@@ -16,7 +18,7 @@
   },
   "author": "",
   "license": "ISC",
-  "ports":{
-    "port":3003
+  "ports": {
+    "port": 3003
   }
 }

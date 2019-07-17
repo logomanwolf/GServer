@@ -1,9 +1,13 @@
 import numpy as np
 import networkx as nx 
 import sys
+import json
 
-def getShortestPath(res,des,filename):
-    G=nx.read_edgelist(filename)
+def getShortestPath(res, des, filename):
+    if filename.find('weight')==-1:
+        G = nx.read_edgelist(filename)
+    else:
+        G=nx.read_weighted_edgelist(filename)
     return nx.all_shortest_paths(G,res,des)
 
 if __name__ == "__main__":
@@ -14,4 +18,6 @@ if __name__ == "__main__":
         end=sys.argv[3]
         filename=sys.argv[1]
         shortest_paths=getShortestPath(start,end,filename)
-        print([p for p in shortest_paths])
+        data=[p for p in shortest_paths]
+        jsonStr = json.dumps(data)
+        print(jsonStr)  

@@ -8,7 +8,10 @@ if __name__ == '__main__':
     else:
         filename = sys.argv[1]
 
-    graph = nx.read_edgelist(filename)
+    if filename.find('weight')==-1:
+        G = nx.read_edgelist(filename)
+    else:
+        G = nx.read_weighted_edgelist(filename)
     # p = PageRank(graph, isDirected)
     # p.rank()
     # sorted_r = sorted(p.ranks.items(), key=operator.itemgetter(1), reverse=True)

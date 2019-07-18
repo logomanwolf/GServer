@@ -19,4 +19,3 @@ if __name__ == "__main__":
             partition = community.best_partition(G)
             jsonStr = json.dumps(partition)
             print(jsonStr)
-            
